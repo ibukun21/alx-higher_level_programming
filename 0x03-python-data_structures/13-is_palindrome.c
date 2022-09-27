@@ -1,70 +1,34 @@
 #include "lists.h"
-#include <stdio.h>
 
-int is_palindrome(listint_t **head);
+/**
+ * is_palindrome - calls helper to check if a singly linked list
+ *                 is a palindrome
+ * @head: head of listint_t linked list
+ *
+ * Return: 0 if not palindrome, 1 if it is
+ */
+int is_palindrome(listint_t **head)
 {
-  listint_t *nhead, *tort, *hare, *ptort;
-  listint_t *cut = NULL, *half, *it1, *it2;
-
-  if (!head || !*head)
-    return (1);
-
-  nhead = *head;
-  if (nhead->next != NULL)
-    {
-      for (hare = nhead, tort = nhead; hare != NULL && hare->next != NULL;
-	   ptort = tort, tort = tort->next)
-	hare = hare->next->next;
-      if (hare != NULL)
-	{
-	  cut = tort;
-	  tort = tort->next;
-	}
-      ptort->next = NULL;
-      half = tort;
-      it1 = reverse_listint(&half);
-      for (it2 = *head; it2; it1 = it1->next, it2 = it2->next)
-	{
-	  if (it2->n != it1->n)
-	    return (0);
-	}
-      if (cut == NULL)
-	ptort->next = half;
-      else
-	{
-	  ptort->next = cut;
-	  cut->next = half;
-	}
-    }
-
-  return (1);
+	if (head == NULL || *head == NULL || (*head)->next == NULL)
+		return (1);
+	return (is_pal_helper(head, *head));
 }
 
 /**
- * reverse_listint - Reverses a linked list in pladce
- * @head: Pointer to a pointer pointing to the first item in the list
+ * is_pal_helper - checks if a singly linked list is a palindrome
+ * @head: head of listint_t linked list
+ * @end: pointer to end of palindrome
  *
- * Return: The new head of the reversed list
+ * Return: 0 if not palindrome, 1 if it is
  */
-listint_t *reverse_listint(listint_t **head)
+int is_pal_helper(listint_t **head, listint_t *end)
 {
-  listint_t *next = NULL, *prev = NULL;
-
-  if (!head || !*head)
-    return (NULL);
-
-  while ((*head)->next)
-    {
-      next = (*head)->next;
-
-      (*head)->next = prev;
-
-      prev = *head;
-
-      *head = next;
-    }
-
-  (*head)->next = prev;
-
-  return (*head);
+	if (end == NULL)
+		return (1);
+	if (is_pal_helper(head, end->next) && (*head)->n == end->n)
+	{
+		*head = (*head)->next;
+		return (1);
+	}
+	return (0);
 }
