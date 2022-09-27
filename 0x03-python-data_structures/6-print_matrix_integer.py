@@ -9,5 +9,5 @@ def print_matrix_integer(matrix=[[]]):
           if m != arr[-1]:
          print("{:d}".format(m), end=" ")
     else:
-         print("{:d}".format(m))
+         print("{:d}".format(m), )
 
