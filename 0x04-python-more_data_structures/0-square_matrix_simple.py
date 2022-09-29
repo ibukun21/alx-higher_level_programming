@@ -1,9 +1,6 @@
 #!/usr/bin/python3
 def square_matrix_simple(matrix=[]):
-    if not matrix:
-        print()
-    return [[item**2 for item in row] for row in matrix]
 squared = []
     for line in matrix:
-        squared.append([c**2 for c in line])
+     squared.append([i**2 for i in line])
     return squared
