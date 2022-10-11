@@ -1,4 +1,4 @@
-#Python - Classes and Objects
+Python - Classes and Objects
 
 The objectives of this project is to know:
 
