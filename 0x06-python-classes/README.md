@@ -1,6 +1,6 @@
 #Python - Classes and Objects
 
-*The objectives of this project is to know:
+The objectives of this project is to know:
 
 Why Python programming is awesome
 What is OOP
