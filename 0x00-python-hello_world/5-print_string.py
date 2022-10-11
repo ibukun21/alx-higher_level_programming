@@ -1,3 +1,3 @@
 #!/usr/bin/python3
 str = "Holberton School"
-print("{:s}\n{:.9}".format((str * 3), str))
+print(f"{3 * str}\n{str[:9]}")
