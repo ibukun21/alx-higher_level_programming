@@ -1,15 +1,12 @@
 #!/usr/bin/python3
-"""
-LockedClass
+"""This module contains a class called LockedClass with no class or object
+attribute and prevents the user from dynamically creating new instance
+attributes
 """
 
 
 class LockedClass:
-    """ No class or object attributes, can't set
-        Except for first_name
+    """Simple class that only allows to create a new instance attribute if
+    it's called first_name.
     """
-    def __setattr__(self, attribute, value):
-        if attribute == "first_name":
-            self.__dict__[attribute] = value
-        else:
-            raise AttributeError("'LockedClass' object has no attribute '" + attribute + "'")
+    __slots__ = 'first_name'
